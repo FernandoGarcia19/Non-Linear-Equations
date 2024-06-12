@@ -17,4 +17,17 @@ def Biseccion(a, b, lim):
         i = i+1
     return m
 
-print(Biseccion(1,2,5))
+def FalsaPosicion(a, b, lim):
+    i = 0
+    m = a - (ObjectiveFunction(a)*(a-b))/(ObjectiveFunction(a)-ObjectiveFunction(b))
+    while(i < lim):
+        if(ObjectiveFunction(b)*ObjectiveFunction(m) < 0):
+            a = m
+        else:
+            b = m
+        m = a - (ObjectiveFunction(a)*(a-b))/(ObjectiveFunction(a)-ObjectiveFunction(b))
+        i = i+1
+    return m
+
+
+print(FalsaPosicion(1,2,10))
