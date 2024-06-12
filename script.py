@@ -1,6 +1,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
+h = 0.005
+
 def ObjectiveFunction(x):
     result = np.exp(-x) - np.log(x) 
     return result
@@ -29,5 +31,15 @@ def FalsaPosicion(a, b, lim):
         i = i+1
     return m
 
+def Newton(x0, lim):
+    i = 0
+    res = x0
+    while(i<lim):
+        res = res - ((h*ObjectiveFunction(res))/(ObjectiveFunction(res+h)-ObjectiveFunction(res)))
+        i = i+1
+    return res
 
-print(FalsaPosicion(1,2,10))
+
+
+
+print(Newton(2,10))
