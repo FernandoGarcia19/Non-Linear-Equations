@@ -47,6 +47,15 @@ def Newton(x0, lim):
         i = i+1
     return res
 
+def ResultPlot(a, b):
+    x = np.linspace(a, b, 200)
+    y = ObjectiveFunction(x)
+
+    fig, ax = plt.subplots()
+    ax.plot(x, y)
+    plt.show()
+    
+
 
 def MainMenu():
     ans = ""
@@ -62,6 +71,7 @@ def MainMenu():
                 a = int(input("a:"))
                 b = int(input("b:"))
                 print(Biseccion(a,b,ACCURACY))
+                ResultPlot(a, b)
             case "2":
                 a = int(input("a:"))
                 b = int(input("b:"))
