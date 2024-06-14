@@ -8,28 +8,34 @@ def ObjectiveFunction(x):
     return result
 
 def Biseccion(a, b, lim):
-    i = 0
-    m = (a+b)/2
-    while(i < lim):
-        if(ObjectiveFunction(b)*ObjectiveFunction(m) < 0):
-            a = m
-        else:
-            b = m
+    if(ObjectiveFunction(a)*ObjectiveFunction(b) > 0):
+        i = 0
         m = (a+b)/2
-        i = i+1
-    return m
+        while(i < lim):
+            if(ObjectiveFunction(b)*ObjectiveFunction(m) < 0):
+                a = m
+            else:
+                b = m
+            m = (a+b)/2
+            i = i+1
+        return m
+    else:
+        return "No root"
 
 def FalsaPosicion(a, b, lim):
-    i = 0
-    m = a - (ObjectiveFunction(a)*(a-b))/(ObjectiveFunction(a)-ObjectiveFunction(b))
-    while(i < lim):
-        if(ObjectiveFunction(b)*ObjectiveFunction(m) < 0):
-            a = m
-        else:
-            b = m
+    if(ObjectiveFunction(a)*ObjectiveFunction(b) > 0):
+        i = 0
         m = a - (ObjectiveFunction(a)*(a-b))/(ObjectiveFunction(a)-ObjectiveFunction(b))
-        i = i+1
-    return m
+        while(i < lim):
+            if(ObjectiveFunction(b)*ObjectiveFunction(m) < 0):
+                a = m
+            else:
+                b = m
+            m = a - (ObjectiveFunction(a)*(a-b))/(ObjectiveFunction(a)-ObjectiveFunction(b))
+            i = i+1
+        return m
+    else:
+        return "No root"
 
 def Newton(x0, lim):
     i = 0
